@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="Intellectual card game online with your friends in realtime"/>
+    <title>MultiplayerSet - realtime online card game</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+  </head>
+  <body>
+    <div id="header">
+      <h1>
+        <a href="./index.html">Multiplayer<span class="grey">Set</span></a>
+      </h1>
+    </div>
+    <div id="wrap">
+      <ul id="explanation">
+        <li class="message cornered">
+          <div class="sidebar sidecol">
+            <p>MultiplayerSet exists thanks to the following open source projects:</p>
+            <ul>
+              <li><a href="http://senchalabs.github.com/connect">Connect</a>, by Sencha Inc.</li>
+              <li><a href="http://headjs.com">headJS</a>, by Tero Piirainen</li>
+              <li><a href="http://jquery.com">jQuery</a>, by John Resig</li>
+              <li><a href="http://benalman.com/projects/jquery-bbq-plugin/">jQuery BBQ</a>, by "Cowboy" Ben Alman</li>
+              <li><a href="https://github.com/louisremi/jquery.transform.js">jquery.transform.js</a>, Louis-Rémi Babé</li>
+              <li><a href="https://github.com/douglascrockford/JSON-js">JSON-js</a>, by Douglas Crockford</li>
+              <li><a href="https://developer.mozilla.org">Mozilla Developer Center</a></li>
+              <li><a href="http://nodejs.org">nodeJS</a>, by Ryan Dahl</li>
+              <li><a href="https://github.com/kof/node-ams">node-ams</a>, by Oleg Slobodskoi</li>
+              <li><a href="http://socket.io">Socket.IO</a>, by Guillermo Rauch</li>
+            </ul>
+          </div>
+          <p>
+          MultiplayerSet is a realtime multiplayer game written in <a href="http://nodejs.org/">nodeJS</a> on
+          the server and <a href="http://jquery.com/">jQuery</a> on the client.
+          </p>
+          <ul>
+          <li>
+            <a href="http://vincentwoo.com">Vincent Woo</a> is a programmer working for Google.
+            He did all the computery stuff.
+          </li>
+          <li>
+            <a href="http://tiffanyenriquez.com">Tiffany Enriquez</a> is a designer who works at eBay.
+            She did the graphics and layouting.
+          </li>
+          </ul>
+          <p>For all inquiries, please <a href="mailto:me@vincentwoo.com">email Vincent</a>.</p>
+        </li>
+      </ul>
+    </div>
+    <div id="fixwrap">
+    	<div id="fixinner">
+        <ul id="menu">
+          <li>
+<!--
+            <a class="button" href="/game/"><h2>Start a private game</h2></a>
+-->
+            <a class="button" href="./game.html"><h2>Start</h2></a>
+          </li>
+          <li>
+<!--
+            <a class="button" href="/game/public/"><h2>Join a public game</h2></a>
+            <a class="button" href="#"><h2>Join a public game</h2></a>
+-->
+          </li>
+          <li>
+<!--
+            <a class="button spaced" href="/"><h2>Home</h2></a>
+-->
+            <a class="button spaced" href="./index.html"><h2>Home</h2></a>
+          </li>
+          <li class="spaced message cornered">
+            <div class="social">
+              <h3 style="margin: 8px 0">Social tomfoolery</h3>
+              <g:plusone size="medium" href="http://multiplayerset.com"></g:plusone>
+              <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://multiplayerset.com" data-count="horizontal" data-via="tffny"></a>
+              <a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent('http://multiplayerset.com'); return false" style="margin-top: -5px"> <img src="http://www.reddit.com/static/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+              <iframe src="http://www.facebook.com/plugins/like.php?app_id=216343035065752&amp;href=http%3A%2F%2Fmultiplayerset.com&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=verdana&amp;height=21" scrolling="no" frameborder="0" style="border:none; margin-left: 5px; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="position:absolute; top:380px; left:40px; z-index: -10;">
+      <img src="perm/cards.png" alt="cards.png" width="297" height="165">
+    </div>
+
+<!-- JK <script src="/load.js"></script>
+    <script>
+      head.load('http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js'
+      , './client.js');
+     </script>
+ -->
+<!-- JK
+    <script>
+      head.js('http://www.google-analytics.com/ga.js', function () {
+        _gat._getTracker('UA-267782-3')._trackPageview();
+      });
+      head.js('https://apis.google.com/js/plusone.js');
+      head.js('http://platform.twitter.com/widgets.js');
+     </script>
+-->
+  </body>
+</html>

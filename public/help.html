@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="Intellectual card game online with your friends in realtime"/>
+    <title>MultiplayerSet - realtime online card game</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+<!-- JK  -->
+    <script src="./perm/deps//headjs/dist/head.min.js"></script>
+    <script src="./util.js"></script>
+<!--
+    <style>
+      .myshape {
+      	border: 4px;
+        width: 350px;
+        height: 200px;
+        /* margin-right: 40px; */
+        /* display: inline-block; */
+        background: url('help/cards.png') no-repeat;
+      }
+      #divshape {
+        background: url('help/cards.png') no-repeat;
+      	background-color: cyan;
+      	color: red;
+      }
+    </style>
+-->
+<!-- JK  -->
+  </head>
+  <body>
+<!--
+<div id="divshapeXXX" class="myshape">
+	hello
+	<img src="help/cards.png" alt="cards.png" width="297" height="165">
+</div>
+	-->
+    
+<ul id="explanation">
+  <li><h1>Spielregeln</h1></li>
+  <li class="message cornered full">
+  <p>
+  Set ist ein Spiel, in dem man <b>SETS</b> aus drei Karten auf einem 
+  Spielfeld mit zwölf Karten finden muss. Welche Karten zu einem SET 
+  gehören, hängt mit ihren <b>VIER Eigenschaften</b> ab, welche jede Karte
+  besitzt:
+  </p>
+  <ul>
+    <li><b>Form</b>: oval, Karo, or Kringel</li>
+    <li><b>Farbe</b>: rot, blau oder grün</li>
+    <li><b>Anzahl</b> der Formen: eine, zwei oder drei</li>
+    <li><b>Muster</b>: gefüllt, hohl oder gestreift</li>
+  </ul>
+  </li>
+  <li><h2>Sets</h2></li>
+  <li class="message cornered">
+  <div class="sidebar">
+    <div class="set">
+      <div class="cardwrap" number="0" color="0" shape="0" shading="0"></div>
+      <div class="cardwrap" number="0" color="0" shape="0" shading="0"></div>
+      <div class="cardwrap" number="0" color="0" shape="0" shading="0"></div>
+    </div>
+  </div>
+  <p>
+    Ein SET besteht aus drei Karten, bei denen alle Eigenschaften auf den 
+    drei Karten entweder <b>alle gleich</b> sind&hellip;
+  </p>
+  <div class="clear"></div>
+  <div class="sidebar">
+    <div class="set">
+      <div class="cardwrap" number="0" color="0" shape="0" shading="0"></div>
+      <div class="cardwrap" number="1" color="1" shape="1" shading="1"></div>
+      <div class="cardwrap" number="2" color="2" shape="2" shading="2"></div>
+    </div>
+  </div>
+  <p>
+    oder <b>alle unterschiedlich</b>&hellip;
+  </p>
+  <div class="clear"></div>
+  <div class="sidebar">
+    <div class="set">
+      <div class="cardwrap" number="0" color="0" shape="1" shading="0"></div>
+      <div class="cardwrap" number="0" color="1" shape="1" shading="1"></div>
+      <div class="cardwrap" number="0" color="2" shape="1" shading="2"></div>
+    </div>
+  </div>
+  <p>
+  	oder <b>eine Mischung aus gleichen und verschiedenen Eigenschaften</b>.
+  	Hier haben die Karten Anzahl und Form <b>gemeinsam</b> bei komplett
+  	<b>unterschiedlichen</b> Farben und Mustern.
+  </p>
+  <div class="clear"></div>
+  </li>
+  <li><h2>Faustregel</h2></li>
+  <li class="message cornered">
+  <p>
+  Wenn man sich nicht sicher sind, ob man ein SET gefunden hat, fragt man sich:
+  <b>"Gibt es nur zwei von jeder Eigenschaft?"</b> Wenn ja, dann hat man kein SET.
+  Hier sind einige Beispiele:
+  </p>
+  <div class="sidebar">
+    <div class="set">
+      <div class="cardwrap" number="2" color="2" shape="0" shading="0"></div>
+      <div class="cardwrap" number="2" color="1" shape="0" shading="1"></div>
+      <div class="cardwrap" number="2" color="1" shape="0" shading="2"></div>
+    </div>
+  </div>
+  <p>
+    Dies wäre ein SET, außer dass <b>zwei der Karten</b> blau sind. Wenn sie
+    alle blau wären oder jede Farbe anders, so hätte man ein richtiges SET.
+  </p>
+  <div class="clear"></div>
+  <div class="sidebar">
+    <div class="set">
+      <div class="cardwrap" number="1" color="1" shape="1" shading="0"></div>
+      <div class="cardwrap" number="2" color="0" shape="0" shading="1"></div>
+      <div class="cardwrap" number="0" color="2" shape="2" shading="0"></div>
+    </div>
+  </div>
+  <p>
+    Gleiches Problem hier: <b>zwei der Karten</b> haben gefülltes Muster. Wenn
+    alle drei gefüllt wären oder alle unterschiedliche Muster hätten, dann
+    wäre es korrekt.
+  </p>
+  <div class="clear"></div>
+  </li>
+  <li><h2>Spiel starten</h2></li>
+  <li class="message cornered full">
+    <p>
+        Um ein Spiel zu beginnen, wählt man <b>Start</b> in der linken oberen Ecke.
+        Man kann den angezeigten Link des aktuellen Spielraumes nutzen, um
+        einen Freund einzuladen (bis zu acht Spieler).
+    </p>
+<!--
+    <p>
+        Um schnell ein Spiel zu beginnen, drücke <b>join a public game</b>. Man wird für
+        ein Spiel vorgemerkt, das startet sobald drei Personen anwesend sind. Während sich
+        der Raum füllt, kann man sich mit einem Übungsspiel aufwärmen.
+    </p>
+-->
+    <p>
+        Klicke auf Karten, um ein SET zu bilden. Eine Auswahl kann aufgehoben werden
+        indem man auf eine beliebige Stelle des Spielbretts klickt.
+<!--
+        Schreibe Nachrichten und drücke &lt;RETURN&gt; um sich mit den anderen Spielern
+        zu unterhalten.
+-->
+    </p>
+    <h3>Tipps</h3>
+    <p>
+        Wenn du einen Hinweis brauchst oder kein SET auf der Tafel siehst (was passieren kann),
+        benutze die Schaltfläche <b>TIPP</b>. Wenn die Mehrheit der Spieler dies tut, wird eine 
+        Karte eines SETs auf dem Brett enthüllt. Wenn es keine gibt, werden drei zusätzliche 
+        Karten ausgeteilt.
+    </p>
+  </li>
+</ul>
+<!-- JK <script src="/load.js"></script> -->
+<script>
+  head.load('http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js'
+  , './client.js'
+  , function() {
+    $(parseCards);
+  });
+</script>
+</body>
+</html>
