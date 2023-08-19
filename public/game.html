@@ -6,7 +6,8 @@
     <title>MultiplayerSet - realtime online card game</title>
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<!-- JK230819 change "https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" to local file -->
+    <script src="./jquery1-5-2.min.js"></script>
     <script src="./perm/deps/headjs/dist/head.min.js"></script>
     <script src="./util.js"></script>
 <!-- JK
@@ -121,8 +122,9 @@
       </form>
     </div>
 <!-- JK <script src="/load.js"></script> -->
+<!-- JK230819 change 'https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js' to local file -->
     <script>
-      head.load('http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js'
+      head.load('./jquery1-5-2.min.js'
       , '/socket.io/socket.io.js'
       , './client.js'
       , function() {

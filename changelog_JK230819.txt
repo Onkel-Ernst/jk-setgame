@@ -1,0 +1,19 @@
+JK230819
+
+node_modules/connect/lib/middleware/static.js:
+ root Pfad geändert
+
+node_modules/socket.io/node_modules/policyfile/lib/server.js:
+ process.EventEmitter gegen require('events') ersetzt
+
+public/game.html:
+ lokale jquery.min.js
+
+public/help.html
+ lokale jquery.min.js und zusätzlich im Header
+
+public/index.html
+ lokale jquery.min.js
+
+public/jquery1-5-2.min.js
+ *NEU*

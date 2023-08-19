@@ -7,7 +7,9 @@
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
 <!-- JK  -->
-    <script src="./perm/deps//headjs/dist/head.min.js"></script>
+<!-- JK230819 include jquery1-5-2.min.js" -->
+    <script src="./jquery1-5-2.min.js"></script>
+    <script src="./perm/deps/headjs/dist/head.min.js"></script>
     <script src="./util.js"></script>
 <!--
     <style>
@@ -156,8 +158,9 @@
   </li>
 </ul>
 <!-- JK <script src="/load.js"></script> -->
+<!-- JK230819 change 'https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js' to local file -->
 <script>
-  head.load('http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js'
+  head.load('./jquery1-5-2.min.js'
   , './client.js'
   , function() {
     $(parseCards);

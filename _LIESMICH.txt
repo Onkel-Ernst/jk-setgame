@@ -1,0 +1,13 @@
+
+Ausgangspunkt:
+==============
+D:\TEMP\git clone https://github.com/vincentwoo/setgame.git
+
+D:\TEMP\cd setgame
+
+D:\TEMP\git submodule update --init --recursive
+D:\TEMP\npm install
+
+D:\TEMP\npm start
+ 
+Leider läuft das dann ohne Anpassungen im Quellcode nicht.
