@@ -2,6 +2,11 @@ JK230820
 
 public/game.html:
   form-input-tag now with id="share-link"
+  checkbox for Chat Window
+
+public/style.css:
+  css style for Chat Window
 
 server.js:
   disconnect-log-message before game.unregisterClient()
+

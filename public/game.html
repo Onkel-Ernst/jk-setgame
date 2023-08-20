@@ -108,17 +108,24 @@
       </ul>
     </div>
     <div id="footer">
-      <form>
+      <form name="jkform">
         <div style="position: absolute; left: 30px; top: 10px;">
           <a href=""
           onclick="window.open('/help', 'help',
-                  'menubar=0,status=0,scrollbars=1,toolbar=0,menubar=0,resizeable=1,width=710,height=715'); return false;">
+                  'menubar=0,status=0,scrollbars=1,toolbar=0,menubar=0,resizeable=1,width=730,height=730'); return false;">
           REGELN</a> vergessen?
         </div>
-        <!--
-        <h3></h3><label for="input">Type here to chat</label>
-        <textarea wrap="hard" autocomplete="off" spellcheck="false" id="input"></textarea>
-        -->
+        <h3></h3> <!-- Player # -->
+        <!-- JK -->
+        Chat-Fenster EIN/AUS
+        <input type="checkbox" name="chatbox" value="showchat"
+          onclick="document.getElementById('jkchat').style.visibility = (document.jkform.chatbox.checked?'visible':'hidden')"
+        >
+        <div id="jkchat" style="visibility: hidden">
+          <label for="input">Chat-Text hier eingeben...</label>
+          <textarea wrap="hard" autocomplete="off" spellcheck="false" id="input"></textarea>
+        </div>
+        <!-- JK -->
       </form>
     </div>
 <!-- JK <script src="/load.js"></script> -->
