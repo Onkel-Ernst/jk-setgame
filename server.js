@@ -107,8 +107,9 @@ io.sockets.on('connection', function(socket){
   socket.on('disconnect', function() {
     if (!game) return;
     var hash = game.hash;
+    console.log('disconnecting socket ' + socket.id);
+    console.log('*** game suspended ***');
     game.unregisterClient(socket, function gameOver() {
-      console.log('gameover called');
       delete games[hash];
     });
     game = null;

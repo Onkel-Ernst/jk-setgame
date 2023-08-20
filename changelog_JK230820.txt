@@ -1,0 +1,7 @@
+JK230820
+
+public/game.html:
+  form-input-tag now with id="share-link"
+
+server.js:
+  disconnect-log-message before game.unregisterClient()
