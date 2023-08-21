@@ -205,14 +205,17 @@ textarea {
   margin-top: 5px;
 }
 #footer {
-  position: fixed;
+  position: absolute;
+  /*
   width: 280px;
   left: 0px;
-  /* bottom: 0; */
   top: 550px;
   height: 54px;
-  border-top: 4px solid #aaa;
-  /* background: #cecece; */
+  */
+  bottom: 40px;
+  border: 1px solid #aaa;
+  border-style: inset;
+  background: #cecece;
 }
   #footer form {
     width: 180px;

@@ -17,8 +17,37 @@
     <script src="./perm/deps/jquery-bbq/shared/jquery-ui-1.7.2/js/jquery-ui-1.7.2.js"></script>
     <script src="./perm/deps/jquery-bbq/jquery.ba-bbq.min.js"></script>
 -->
+
+<!-- begin JK230821: Versuch via initGame() die Session auf render.com alive zu halten -->
+<script>
+  var glbTime = 580;        // knapp 10 min
+  var cntdwnTime = glbTime;
+  var myTimeout;
+
+  function showCountdown() {
+    var ctndwnText = "Refresh Page in " + cntdwnTime + " seconds...";
+    document.getElementById('countdown').innerHTML = ctndwnText;
+    keepAlive();
+  };
+
+  function keepAlive() {
+    if (cntdwnTime > 0) {
+      cntdwnTime = cntdwnTime - 1;
+      myTimeout = setTimeout(showCountdown, 1000);
+    }
+    else {
+      //alert("initGame()");
+      clearTimeout(myTimeout);
+      cntdwnTime = glbTime;
+      showCountdown();
+      initGame();
+    }
+  }
+</script>
+<!-- JK230821 end -->
+
   </head>
-  <body>
+  <body onLoad="showCountdown()">
     <div id="header">
       <h1>
         <a href="./index.html">Multiplayer<span class="grey">Set</span></a>
@@ -110,6 +139,9 @@
     <div id="footer">
       <form name="jkform">
         <div style="position: absolute; left: 30px; top: 10px;">
+        <!-- begin JK230821: Versuch via initGame() die Session auf render.com alive zu halten -->
+          <div id="countdown"></div>
+        <!-- JK230821 end -->
           <a href=""
           onclick="window.open('/help', 'help',
                   'menubar=0,status=0,scrollbars=1,toolbar=0,menubar=0,resizeable=1,width=730,height=730'); return false;">
