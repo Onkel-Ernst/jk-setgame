@@ -11,3 +11,27 @@ D:\TEMP\npm install
 D:\TEMP\npm start
  
 Leider läuft das dann ohne Anpassungen im Quellcode nicht.
+
+
+Umzug von heroku.com nach onrender.com
+--------------------------------------
+
+Auf der neuen Plattform schlägt ein Session-Timeout (?) zu.
+Jedenfalls verliert der Spieltisch die Verbindung.
+Daher ein "automatischer" refresh nach 150 s.
+Anm.: Lokal KEINE Probleme
+
+Die Version auf onrender ist mit meinem github-Projekt verknüpft:
+https://github.com/login
+Onkel-Ernst
+GitJupp59
+
+
+git-Befehle (im Terminal)
+-------------------------
+git status
+git diff (--staged)  |  git diff public/game.html
+git add <datei>      |  git add .
+git commit -m "keepAlive Timer changed to 150s"
+git push
+
