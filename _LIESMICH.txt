@@ -30,8 +30,11 @@ GitJupp59
 git-Befehle (im Terminal)
 -------------------------
 git status
-git diff (--staged)  |  git diff public/game.html
-git add <datei>      |  git add .
+git diff [--staged]       |  git diff public/game.html
+git add _LIESMICH.txt
+git add public/game.html  |  git add .
+git diff --staged
 git commit -m "keepAlive Timer changed to 150s"
+git commit -m "keepAlive Timer changed to 800s, initGame() changed to location.reload()"
 git push
 

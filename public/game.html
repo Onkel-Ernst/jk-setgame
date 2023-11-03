@@ -20,7 +20,7 @@
 
 <!-- begin JK230821: Versuch via initGame() die Session auf render.com alive zu halten -->
 <script>
-  var glbTime = 150;        // 2.5 min
+  var glbTime = 800;        // 800 s ~ 13.3 min
   var cntdwnTime = glbTime;
   var myTimeout;
 
@@ -40,7 +40,8 @@
       clearTimeout(myTimeout);
       cntdwnTime = glbTime;
       showCountdown();
-      initGame();
+      //initGame();      // JK230821
+      location.reload(); // JK231103
     }
   }
 </script>
