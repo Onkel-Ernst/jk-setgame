@@ -10,21 +10,21 @@ D:\TEMP\npm install
 
 D:\TEMP\npm start
  
-Leider l‰uft das dann ohne Anpassungen im Quellcode nicht.
+Leider l√§uft das dann ohne Anpassungen im Quellcode nicht.
 
 
 Umzug von heroku.com nach onrender.com
 --------------------------------------
 
-Auf der neuen Plattform schl‰gt ein Session-Timeout (?) zu.
+Auf der neuen Plattform schl√§gt ein Session-Timeout (?) zu.
 Jedenfalls verliert der Spieltisch die Verbindung.
 Daher ein "automatischer" refresh nach 150 s.
 Anm.: Lokal KEINE Probleme
 
-Die Version auf onrender ist mit meinem github-Projekt verkn¸pft:
+Die Version auf onrender ist mit meinem github-Projekt verkn√ºpft:
 https://github.com/login
-Onkel-Ernst
-GitJupp59
+
+
 
 
 git-Befehle (im Terminal)
