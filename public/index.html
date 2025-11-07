@@ -165,10 +165,12 @@
 <!-- JK change 'https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js' to local file -->
     <script>
       head.load('./jquery1-5-2.min.js'
-      , './client.js'
-      , function() {
-        $(parseCards);
-      });
+              , './client.js'
+  // JK251107 , function() { $(parseCards); }
+      );
+  // JK251107: some function that depends on client.js
+  // this will only be executed once client.js has finished loading
+      head.ready("client.js", function () { $(parseCards); });
 /*
 <!-- JK
       head.js('http://www.google-analytics.com/ga.js', function () {

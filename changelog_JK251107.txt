@@ -1,0 +1,6 @@
+JK251107
+
+public/game.html:
+public/help.html:
+public/index.html:
+  JK251107: Functions in client.js can only be called once client.js has fully loaded.
