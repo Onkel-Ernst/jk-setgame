@@ -12,6 +12,34 @@
     <script src="./perm/deps/jquery-bbq/jquery.ba-bbq.min.js"></script>
     <script src="./perm/deps//headjs/dist/head.min.js"></script>
     <script src="./util.js"></script>
+    <script>
+      function launch_game() {
+          var param = "";
+          var dbg_level = $("input[type='radio'][name='debug_out_level']:checked").val();
+          switch(dbg_level) {
+            case "level_1":
+              param = "?DEBUG=1";
+              break;
+            case "level_2":
+              param = "?DEBUG=2";
+              break;
+            default:
+              param = "";
+          }
+          //alert("dbg_level: " + dbg_level + ", param: (" + param + ")");
+          location.href = "./game.html" + param;
+      }
+      </script>
+      <style>
+        .radio {
+          /* background: #bbb; position: absolute; left: 8px; bottom: 8px; */
+          border: 0px;
+          border-style: solid;
+          margin: 4px;
+          padding-left: 4px;
+          width: 260px;
+        }
+      </style>
   </head>
   <body>
     <div id="header">
@@ -138,29 +166,46 @@
         </p>
         </li>
       </ul>
+
+      <div class="radio">
+        <form action="">
+          Console Debug-Level:<br />
+          <input type="radio" id="level_0" name="debug_out_level" value="level_0" checked="checked">
+          <label for="level_0">off</label>
+          <input type="radio" id="level_1" name="debug_out_level" value="level_1">
+          <label for="level_1">basic</label>
+          <input type="radio" id="level_2" name="debug_out_level" value="level_2">
+          <label for="level_2">detail</label>
+        </form>
+      </div>
     </div>
-    <div id="fixwrap"><div id="fixinner">
-      <ul id="menu">
-        <li>
+
+
+    <div id="fixwrap">
+      <div id="fixinner">
+        <ul id="menu">
+          <li>
 <!--
-          <a class="button" href="/game/"><h2>Start a private game</h2></a>
+            <a class="button" href="/game/"><h2>Start a private game</h2></a>
+            <a class="button" href="./game.html"><h2>Start</h2></a>
 -->
-          <a class="button" href="./game.html"><h2>Start</h2></a>
-        </li>
-        <li>
+            <a class="button" href="javascript:launch_game()"><h2>Start</h2></a>
+          </li>
+          <li>
 <!--
-          <a class="button" href="/game/public/"><h2>Join a public game</h2></a>
-          <a class="button" href="#"><h2>Join a public game</h2></a>
+            <a class="button" href="/game/public/"><h2>Join a public game</h2></a>
+            <a class="button" href="#"><h2>Join a public game</h2></a>
 -->
-        </li>
-        <li>
+          </li>
+          <li>
 <!--
-          <a class="button spaced" href="/about/"><h2>About</h2></a>
+            <a class="button spaced" href="/about/"><h2>About</h2></a>
 -->
-          <a class="button spaced" href="./about.html"><h2>Über</h2></a>
-        </li>
-      </ul>
-    </div></div>
+            <a class="button spaced" href="./about.html"><h2>Über</h2></a>
+          </li>
+        </ul>
+      </div>
+    </div>
 <!-- JK <script src="/load.js"></script> -->
 <!-- JK change 'https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js' to local file -->
     <script>

@@ -10,6 +10,10 @@ var socket
       'add', 'hint', 'start', 'win', 'msg', 'disconnect', 'reconnect', 'reconnecting',
       'reconnect_failed'];
 
+const DBG_LOW = 1;
+const DBG_HIGH = 2;
+var console_out = 0;
+
 $(function() {
   fixwrap = $('#fixwrap');
   $(window).scroll(function() {
@@ -17,8 +21,28 @@ $(function() {
   });
 });
 
+
+function cons_log(msg, level) {
+  //console.log("DEBUG: ("+console_out+"/"+level+"), "+(console_out == DBG_LOW)+" - "+(console_out == DBG_HIGH));
+  if(console_out) {
+    if (level == DBG_LOW) {
+      console.log("  client\\client.js: " + msg);
+    } 
+    if (console_out == DBG_HIGH && level == DBG_HIGH) {
+      console.log("+ client\\client.js: " + msg);
+    }
+  }
+}
+
 function startGame() {
-/*JK*/console.log('---------- client\\client.js: startGame');
+  var params = new URLSearchParams(document.location.search);
+  var debug_param = params.get("DEBUG");
+  if(debug_param == null) {
+    console_out = 0;
+  } else {
+    console_out = parseInt(debug_param);
+  }
+  cons_log('startGame - DEBUG='+console_out, DBG_LOW);
 
   socket = io.connect();
   
@@ -88,7 +112,7 @@ function startGame() {
 }
 
 function parseCards() {
-/*JK*/console.log('---------- client\\client.js: parseCards');
+  cons_log('parseCards', DBG_LOW);
   $('.cardwrap').each(function() {
     var elem = $(this)
       , card = {
@@ -103,6 +127,7 @@ function parseCards() {
 }
 
 function generateShapes(card) {
+  cons_log('generateShapes ' + JSON.stringify({ card: card }), DBG_HIGH);
   var shapeWrap = $('<div/>', {
         'class': 'shapeWrap'
       })
@@ -121,6 +146,7 @@ function generateShapes(card) {
 }
 
 function addCards(newCards) {
+  cons_log('addCards', DBG_LOW);
   var tr = null;
   $.each(newCards, function(idx, card) {
     if (idx % 3 === 0) tr = $('<tr/>');
@@ -142,6 +168,7 @@ function addCards(newCards) {
 function select(elem) {
   var idx = cards.map( function(v) { return v[0]; } ).indexOf(elem)
     , search = selected.indexOf(idx);
+  cons_log('select: idx: ' + idx, DBG_LOW);
   if (search != -1) {
     unselect(search);
   } else {
@@ -154,11 +181,13 @@ function select(elem) {
 
 // takes index of selected array to unselect
 function unselect(idx) {
+  cons_log('unselect: idx: ' + idx, DBG_LOW);
   var deselected = selected.splice(idx, 1)[0];
   cards[deselected].removeClass('selected');
 }
 
 function clearSelected() {
+  cons_log('clearSelected', DBG_LOW);
   selected.forEach( function(idx) {
     cards[idx].removeClass('selected');
   });
@@ -166,6 +195,7 @@ function clearSelected() {
 }
 
 function checkSet() {
+  cons_log('checkSet', DBG_HIGH);
   if (selected.length === 3) {
     socket.emit('take', selected);
     setTimeout(clearSelected, 250);
@@ -174,6 +204,7 @@ function checkSet() {
 }
 
 function hidePlayers() {
+  cons_log('hidePlayers', DBG_LOW);
   $('#scoreboard li').hide();
   $('#scoreboard li .offline').hide();
   $('#scoreboard li .puzzled').hide();
@@ -181,6 +212,7 @@ function hidePlayers() {
 
 function updatePlayers(playerData) {
   for (var i in playerData) {
+    cons_log('updatePlayers ' + JSON.stringify({ player: i, playerData: playerData[i] }), DBG_LOW);
     var player = $('#p' + i);
     if ('score' in playerData[i]) player.children('h2').text('' + playerData[i].score);
     if ('online' in playerData[i]) {
@@ -192,6 +224,7 @@ function updatePlayers(playerData) {
 }
 
 function fadeOutLastSet(player) {
+  cons_log('fadeOutLastSet player:'+player, DBG_LOW);
   if (player in lastSets) {
     lastSets[player].forEach( function(elem) {
       elem.fadeOut(function() {$(this).remove()});
@@ -201,12 +234,14 @@ function fadeOutLastSet(player) {
 }
 
 function fadeOutAllLastSets() {
+  cons_log('fadeOutAllLastSets:', DBG_LOW);
   for (var player in lastSets) {
     fadeOutLastSet(player);
   }
 }
 
 function requestHint(event) {
+  cons_log('requestHint:', DBG_LOW);
   socket.emit('hint');
   $('#hint').animate({opacity:0});
   showPuzzled(me);
@@ -263,19 +298,21 @@ function msg(obj) {
 }
 
 function join(player) {
+  cons_log('join', DBG_LOW);
   update = {};
   update[player] = {score: 0, online: true};
   updatePlayers(update);
 }
 
 function rejoin(player) {
+  cons_log('rejoin', DBG_LOW);
   var update = {};
   update[player] = {online: true};
   updatePlayers(update);
 }
 
 function init(game) {
-/*JK*/console.log('---------- client\\client.js: init(game)');
+  cons_log('init(game)', DBG_LOW);
   cards = [];
   $('#board tr').remove();
   hidePlayers();
@@ -363,9 +400,10 @@ function taken(newBoard) {
 }
 
 function setHash(hash) {
+  cons_log("setHash("+hash+")", DBG_LOW);
   preventRefresh = true;
   window.location.replace(window.location.href.split('#')[0] + '#!/' + hash);
-  $('#share input').attr('value', window.location.href);
+  $('#share input').attr('value', window.location.origin + '#!/' + hash);
 }
 
 function leave(player) {
@@ -428,13 +466,17 @@ function resetTimer(seconds) {
 function initGame() {
   var sess = getCookie('sess') || randString(10);
   setCookie('sess', sess, 1.0/24);
-  log('initting s: ' + sess);
+  //log('initting s: ' + sess);
   var init = {sess: sess}
     , hash = window.location.hash;
   if (hash) {
+    cons_log("initGame: Cookie sess: " + sess + ", hash:" + hash, DBG_LOW);
     hash = hash.substring(hash.indexOf('#!/') + 3);
     init.game = hash;
-    $('#share input').attr('value', window.location.href);
+    //$('#share input').attr('value', window.location.href);
+    $('#share input').attr('value', window.location.origin + '#!/' + hash);
+  } else {
+    cons_log("initGame: Cookie sess: " + sess + " ***** NO hash *****", DBG_LOW);
   }
   socket.emit('init', init);
 }

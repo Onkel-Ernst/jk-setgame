@@ -24,6 +24,11 @@
   var cntdwnTime = glbTime;
   var myTimeout;
 
+  function launchGame() {
+    showCountdown();
+    startGame();     //$(startGame);
+  }
+
   function showCountdown() {
     var ctndwnText = "Refresh Page in " + cntdwnTime + " seconds...";
     document.getElementById('countdown').innerHTML = ctndwnText;
@@ -48,7 +53,7 @@
 <!-- JK230821 end -->
 
   </head>
-  <body onLoad="showCountdown()">
+  <body onLoad="launchGame()">
     <div id="header">
       <h1>
         <a href="./index.html">Multiplayer<span class="grey">Set</span></a>
@@ -150,7 +155,7 @@
         </div>
         <h3></h3> <!-- Player # -->
         <!-- JK -->
-        Chat-Fenster EIN/AUS
+        Chat-Eingabe EIN/AUS
         <input type="checkbox" name="chatbox" value="showchat"
           onclick="document.getElementById('jkchat').style.visibility = (document.jkform.chatbox.checked?'visible':'hidden')"
         >
@@ -169,9 +174,10 @@
               , './client.js'
   // JK251107 , function() { $(startGame); }
       );
-      // JK251107: some function that depends on client.js
-      // this will only be executed once client.js has finished loading
-      head.ready("client.js", function () { $(startGame); });
+// put in onLoad-Event
+//      // JK251107: some function that depends on client.js
+//      // this will only be executed once client.js has finished loading
+//      head.ready("client.js", function () { $(startGame); });
 
 /*
 <!-- JK

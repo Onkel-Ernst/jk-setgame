@@ -136,7 +136,7 @@ Game.prototype.handleClientMessage = function(event, socket) {
   var self = this;
   return function(message) {
     var player = self.getPlayerIdx(socket);
-    console.log('receiving ' + event + ' from player ' + player + ' with payload ' + message);
+    console.log('game.js: receiving ' + event + ' from player ' + player + ' with payload ' + message);
     if (player === -1) return;
     self[event].call(self, player, message);
   };
@@ -148,8 +148,7 @@ Game.prototype.updateRemaining = function() {
 }
 
 Game.prototype.broadcast = function(event, message) {
-  console.log(this.hash + ' broadcasting event ' + event + ': ');
-  console.log(message);
+  console.log('game.js: '+ this.hash + ' broadcasting event: ' + event + ', message: ' + message);
   this.players.forEach( function(player) {
     if (player !== null) player.socket.emit(event, message);
   });
@@ -174,7 +173,7 @@ Game.prototype.init = function(player) {
 Game.prototype.take = function(player, selected) {
   if (selected.length !== 3) return;
   if (this.checkSet(selected)) {
-    console.log('take set succeed');
+    console.log('game.js: take set succeed');
     var update = {};
     if (!this.started && this.deck.length === 0) this.resetDeck();
     if (this.board.length <= 12 && this.deck.length > 0) {
@@ -225,7 +224,7 @@ Game.prototype.take = function(player, selected) {
       this.reset();
     }
   } else {
-    console.log('take set failed');
+    console.log('game.js: take set failed');
   }
 }
 
@@ -235,7 +234,7 @@ Game.prototype.hint = function(player) {
   this.broadcast('puzzled', player);
   var self = this;
   setTimeout(function() {
-    console.log('hint timeout executing');
+    console.log('game.js: hint timeout executing');
     if (self.puzzled.length < Math.ceil(self.numPlayers() * 0.51)) return;
     if (!self.hinted) {
       var setExists = self.checkSetExistence();
@@ -320,7 +319,7 @@ function Player(socket, sess) {
 //+ Jonas Raoni Soares Silva
 //@ http://jsfromhell.com/array/shuffle [rev. #1]
 function shuffle(v){
-/*JK*/console.log('---------- game.js: shuffle');
+    console.log('game.js: shuffle');
     for(var j, x, i = v.length;
       i;
       j = Math.floor(Math.random() * i), x = v[--i], v[i] = v[j], v[j] = x)

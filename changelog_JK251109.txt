@@ -1,0 +1,14 @@
+JK251109
+
+game.js:
+  log Messages changed
+
+public/game.html:
+  startGame() called in <body onLoad= ...> instead in head.ready("client.js", ...);
+
+public/client.js:
+public/index.html:
+  DEBUG-Messages-Options for client.js.
+
+public/style.css:
+  style adjustments
