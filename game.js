@@ -136,7 +136,7 @@ Game.prototype.handleClientMessage = function(event, socket) {
   var self = this;
   return function(message) {
     var player = self.getPlayerIdx(socket);
-    console.log('game.js: receiving ' + event + ' from player ' + player + ' with payload ' + message);
+    console.log('game.js: receiving ' + event + ' from player ' + player + ' with payload ' + JSON.stringify({ message: message }));
     if (player === -1) return;
     self[event].call(self, player, message);
   };
@@ -148,7 +148,7 @@ Game.prototype.updateRemaining = function() {
 }
 
 Game.prototype.broadcast = function(event, message) {
-  console.log('game.js: '+ this.hash + ' broadcasting event: ' + event + ', message: ' + message);
+  console.log('game.js: '+ this.hash + ' broadcasting event: ' + event + JSON.stringify({ message: message }));
   this.players.forEach( function(player) {
     if (player !== null) player.socket.emit(event, message);
   });
